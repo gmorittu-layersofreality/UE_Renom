@@ -34,6 +34,18 @@ fn add_game_name_to_engine_config(project_root: &Path, new_name: &str) -> Change
         "GameName",
         new_name,
     ))
+    Change::SetIniEntry(SetIniEntry::new(
+        project_root.join("Config/DefaultEngine.ini"),
+        "[/Script/BuildSettings.BuildSettings]",
+        "DefaultGameTarget",
+        new_name,
+    ))
+    Change::SetIniEntry(SetIniEntry::new(
+        project_root.join("Config/DefaultEngine.ini"),
+        "[/Script/BuildSettings.BuildSettings]",
+        "DefaultEditorTarget",
+        new_name,
+    ))
 }
 
 fn add_project_name_to_game_config(project_root: &Path, new_name: &str) -> Change {
